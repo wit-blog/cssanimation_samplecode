@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title>[YEONG9] CSS Animation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        html, body { height: 100%;overflow: hidden; }
+        body {
+            display: flex;
+            align-items: center;
+	        justify-content: center;
+        }
+        h1 {
+            margin: 0 0 3rem;
+        }
+        .yeong9 {
+            position: relative;
+            width: 300px;
+            text-align: center;
+        }
+
+        #controler {
+            margin: 2rem 0 0;
+        }
+        label {
+            margin: 0 1rem 0 .5rem;
+        }
+
+        #animate {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: red;
+        }
+
+        #animate.topleft {
+
+            animation: move_topleft 3s ease infinite;
+        }
+
+        @keyframes move_topleft {
+            50% {
+                top: 150px;
+                left: 150px;
+            }
+        }
+
+        #animate.translate {
+            animation: move_translate 3s ease infinite;
+        }
+
+        @keyframes move_translate {
+            50% {
+                transform: translate(150px, 150px);
+                
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="yeong9">
+        <h1>CSS Animation</h1>
+        <div id="controler">
+            <input type="radio" id="topleft" name="animate" ><label for="topleft">top/left</label>
+            <input type="radio" id="translate" name="animate" checked><label for="translate">translate</label>
+        </div>
+
+
+        <div id="animate" class="translate"></div>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+        
+	    $(document).ready(
+            function(){
+                $('#controler input').on('click', function(){
+                    $('#animate').attr('class',$(this).attr('id'))
+                })
+            }
+        );
+    
+    </script>
+
+</body>
+</html>
